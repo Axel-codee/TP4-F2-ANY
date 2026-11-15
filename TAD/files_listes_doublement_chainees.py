@@ -2,7 +2,10 @@
 
 """Implémentation des files à l'aide de listes doublement chainées """
 
-from listes_doublement_chainees import ListeDoublementChainee
+try:
+    from .listes_doublement_chainees import ListeDoublementChainee
+except ImportError:  # Exécution directe du fichier depuis TAD/
+    from listes_doublement_chainees import ListeDoublementChainee
 
 class File:
 
