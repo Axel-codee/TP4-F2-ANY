@@ -19,11 +19,11 @@ Les types abstraits de données présentés au TD3 se trouvent dans le répertoi
 Il faut considérer les fichiers de ce répertoire comme autant de librairies de fonctions 
 que vous pourrez utiliser pour vos futurs programmes :  
 
-- `listes_doublement_chainees.py` : implémentation des listes simplement chaînées 
-- `listes_simplement_chainees.py` : implémentation des listes doublement chaînées avec pointeurs de queue
+- `listes_simplement_chainees.py` : implémentation des listes simplement chaînées
+- `listes_doublement_chainees.py` : implémentation des listes doublement chaînées avec pointeurs de queue
 - `piles_listes_python.py` : implémentation des piles à l'aide de listes python 
 - `piles_listes_simplement_chainees.py` : implémentation des piles à l'aide de listes simplement chaînées
-- `files_listes_python.py` :  : implémentation des files à l'aide de listes python
+- `files_listes_python.py` : implémentation des files à l'aide de listes python
 - `files_listes_doublement_chainees.py` : implémentation des files à l'aide de listes doublement chaînées
 
 Le répertoire du dépôt contient les fichiers nécessaires à la réalisation du TP4 : 
@@ -42,8 +42,8 @@ Le répertoire du dépôt contient les fichiers nécessaires à la réalisation 
     - `./generer_probleme.py impossible` : Génère un problème n'ayant aucune solution
     - `./generer_probleme.py ardu` : Génère un problème n'ayant qu'une seule solution
 - Tester les redirections permettant de commencer la résolution du problème du compte est bon : 
-    - `echo 3 5 7 9 25 50 859  | ./compteestbon.py`
-    - `./generer_probleme.py 2026 | ./compteestbon.py`
+    - `echo 3 5 7 9 25 50 859 | python compte_est_bon.py`
+    - `python generer_probleme.py 2026 | python compte_est_bon.py`
 
 
 ## Exercice 2 : Résolution du problème du compte est bon 
@@ -51,7 +51,7 @@ Le répertoire du dépôt contient les fichiers nécessaires à la réalisation 
 Les fonctions de parcours à implémenter se trouvent dans le fichier `recherche_compte_est_bon.py`. Ce fichier contient 3 fonctions de parcours de l'arbre de calculs à la volée : 
     - `parcours_DFS(cartons, cible)` : réalise un parcours itératif en profondeur d'abord
     - `parcours_BFS(cartons, cible)` : réalise un parcours itératif en largeur d'abord
-    - `parcours_DFS_recursif(choisis, restants, cible)` : réalise un parcours récursif en profondeur d'abord
+    - `parcours_DFS_recursif(cartons, cible)` : réalise un parcours récursif en profondeur d'abord
 
 Chaque fonction doit parcourir l'arbre de calculs à la recherche de la cible à partir des cartons fournis en paramètre. 
 Lors du parcours, chaque fois que la fonction se rapproche de la cible, le calcul correspondant doit être affiché. 
@@ -78,3 +78,12 @@ La fonction doit renvoyer le nombre de noeuds (valides ou invalides) parcourus e
 - Combien de noeuds sont parcourus (évalués) ?
 - Combien de temps votre programme met-il pour afficher sa réponse avec chaque parcours ?
 - Quel parcours est le plus efficace ?
+
+## Exécution et rapport
+
+`python -m unittest discover -v` lance les tests. Pour résoudre un tirage :
+`echo 3 5 7 9 25 50 859 | python compte_est_bon.py`.
+Chaque parcours renvoie `(nombre_de_noeuds, expression_NPI)` et peut recevoir un
+dictionnaire `stats={}` facultatif contenant les mesures détaillées. Pour reproduire
+les expériences : `python experimentation_tp4.py 5`. Analyse et chiffres dans
+[`RAPPORT-TP4.md`](RAPPORT-TP4.md).
